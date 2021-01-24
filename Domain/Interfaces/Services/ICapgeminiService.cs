@@ -10,7 +10,6 @@ namespace Domain.Interfaces.Services
     public interface ICapgeminiService
     {
         Retorno<List<ErroValidacao>> Importar(IFormFile formFile, CancellationToken cancellationToken);
-        //List<ArquivoExcel> GetImportacoes();
         List<DtoImportacao> GetImportacoes();
         DtoImportacao GetImportacoes(Guid id);
     }

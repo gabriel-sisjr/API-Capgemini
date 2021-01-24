@@ -19,11 +19,7 @@ namespace Data.Repositories
             _mapper = mapper;
         }
 
-        public void Add(Importacao dados)
-        {
-            //_context.Dados.InsertOne(new List<ImportacaoEntity>(dados.Select(x => _mapper.Map<ImportacaoEntity>(x))));
-            _context.Dados.InsertOne(_mapper.Map<ImportacaoEntity>(dados));
-        }
+        public void Add(Importacao dados) => _context.Dados.InsertOne(_mapper.Map<ImportacaoEntity>(dados));
         public List<Importacao> GetImportacoes() => new List<Importacao>(_context.Dados.Find(_ => true).ToList().Select(x => _mapper.Map<Importacao>(x)).ToList());
         public Importacao GetImportacoes(Guid id) => _mapper.Map<Importacao>(_context.Dados.Find(x => x.Id == id).FirstOrDefault());
     }
