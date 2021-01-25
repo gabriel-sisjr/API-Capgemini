@@ -37,7 +37,6 @@ namespace Services
             if (erros.Any()) return Retorno<List<ErroValidacao>>.GetResult("Erros encontrados", erros);
 
             // Inserindo dados.
-            //_repository.Add(dados);
             _repository.Add(new Importacao { Id = Guid.NewGuid(), DataImportacao = DateTime.Today, DadosArquivo = dados });
 
             return null;

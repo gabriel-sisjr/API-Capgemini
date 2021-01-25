@@ -75,6 +75,8 @@ namespace API_Capgemini
 
             app.UseAuthorization();
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
