@@ -55,7 +55,8 @@ const ImportPorId: React.FC<Imports> = (props) => {
           total={im.totalImportacao}
           key={FormatarId(im.idImportacao)}
         >
-          <div className="container-table">
+          {props.dados.map(v => (
+            <div className="container-table">
             <table>
               <thead>
                 <tr>
@@ -68,15 +69,16 @@ const ImportPorId: React.FC<Imports> = (props) => {
               </thead>
               <tbody>
                 <tr>
-                  <td>234324</td>
-                  <td>"25/12/2021"</td>
-                  <td>oi</td>
-                  <td>345</td>
-                  <td>321</td>
+                  <td>{v.id}</td>
+                  <td>{FormatarData(v.dataEntrega.toString())}</td>
+                  <td>{v.nomeProduto}</td>
+                  <td>{v.quantidade}</td>
+                  <td>{v.valorUnitario}</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          ))}
         </Tabs>
       )}
       <div>
