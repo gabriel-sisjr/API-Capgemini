@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://localhost:5001/api/capgemini",
+  baseURL: "http://localhost:44379/api/capgemini",
 });
 
 export default api;

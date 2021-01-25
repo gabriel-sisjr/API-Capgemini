@@ -8,8 +8,8 @@ const navbar: React.FC = () => {
             <ContainerConteudoNavbar>
                 <img src={Logo} alt="logo-empresa" />
                 <nav>
-                    <a href="/">Listagem</a>
-                    <a href="/Importacao">Importar</a>
+                    <a href="/">Anexar</a>
+                    <a href="/Importacao">Importações</a>
                 </nav>
             </ContainerConteudoNavbar>
         </ContainerNavbar>

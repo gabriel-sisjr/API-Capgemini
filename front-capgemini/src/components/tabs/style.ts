@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const ContainerTabs = styled.div<{height: boolean}>`
+export const ContainerTabs = styled.div<{ aberto: boolean }>`
     background-color: #0070ad;
     border-radius: 12px;
     transition: all 0.3s ease;
-    height: ${props => props.height ? '100%' : '50px'};
+    height: ${props => props.aberto ? '100%' : '50px'};
     .props-tab{
         display: flex;
         flex-direction: row;
@@ -17,7 +17,7 @@ export const ContainerTabs = styled.div<{height: boolean}>`
     }
     .container-table{
         padding: 1rem;
-        opacity: ${props => props.height ? 1 : 0};
+        opacity: ${props => props.aberto ? 1 : 0};
     }
     table{
         margin: 0 auto;

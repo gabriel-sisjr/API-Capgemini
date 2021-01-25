@@ -13,7 +13,7 @@ interface IProps {
   setOpen: (boolean: boolean) => void;
 }
 
-const tabs: React.FC<IProps> = ({
+const Tabs: React.FC<IProps> = ({
   id,
   dataImportacao,
   quantidade,
@@ -24,7 +24,7 @@ const tabs: React.FC<IProps> = ({
   children,
 }) => {
   return (
-    <ContainerTabs height={isOpen}>
+    <ContainerTabs aberto={isOpen}>
       <ul className="props-tab">
         <li>{id}</li>
         <li>{dataImportacao}</li>
@@ -38,4 +38,4 @@ const tabs: React.FC<IProps> = ({
   );
 };
 
-export default tabs;
+export default Tabs;
