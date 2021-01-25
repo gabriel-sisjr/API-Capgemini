@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { ContainerTabs } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 interface IProps {
   id: string;
@@ -9,8 +10,6 @@ interface IProps {
   quantidade: number;
   dataEntrega: string;
   total: number;
-  isOpen?: boolean;
-  setOpen: (boolean: boolean) => void;
 }
 
 const Tabs: React.FC<IProps> = ({
@@ -19,19 +18,19 @@ const Tabs: React.FC<IProps> = ({
   quantidade,
   dataEntrega,
   total,
-  isOpen = false,
-  setOpen,
   children,
 }) => {
   return (
-    <ContainerTabs aberto={isOpen}>
+    <ContainerTabs>
       <ul className="props-tab">
         <li>{id}</li>
         <li>{dataImportacao}</li>
         <li>{quantidade}</li>
         <li>{dataEntrega}</li>
         <li>{total}</li>
-        <FontAwesomeIcon icon={faArrowDown} onClick={() => setOpen(!isOpen)} />
+        <NavLink to={`Importacao/${id}`}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </NavLink>
       </ul>
       <div className="opacity">{children}</div>
     </ContainerTabs>

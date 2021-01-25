@@ -21,7 +21,7 @@ interface DadoLinha {
   valorUnitario: number;
 }
 
-interface Importacao {
+interface Imports {
   idImportacao: string;
   dataImportacao: Date;
   quantidadeItens: number;
@@ -31,54 +31,57 @@ interface Importacao {
 }
 
 const Importacao: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [importacoes, setImportacoes] = useState<Array<Importacao>>([] as Array<Importacao>);
+  const [importacoes, setImportacoes] = useState<Array<Imports>>(
+    [] as Array<Imports>
+  );
 
   useEffect(() => {
     api.get("/").then((x) => {
-      console.log(x);
       setImportacoes(x.data);
     });
   }, []);
 
   return (
     <Container>
-      {importacoes.length > 0 ? importacoes.map((v) => (
-        <Tabs
-          dataEntrega={FormatarData(v.menorDataEntrega.toString())}
-          dataImportacao={FormatarData(v.dataImportacao.toString())}
-          id={FormatarId(v.idImportacao)}
-          quantidade={v.quantidadeItens}
-          total={v.totalImportacao}
-          isOpen={open}
-          setOpen={() => setOpen(!open)}
-          key={v.idImportacao}
-        >
-          {v.dados.map((v) => (
-            <div className="container-table" key={v.id}>
-              <table>
-                <tr>
-                  <th>Id</th>
-                  <th>Data Entrega</th>
-                  <th>Descrição Produto</th>
-                  <th>Quantidade</th>
-                  <th>Valor Unitário</th>
-                </tr>
-                <tr>
-                  <td>{FormatarId(v.id)}</td>
-                  <td>{FormatarData(v.dataEntrega.toString())}</td>
-                  <td>{v.nomeProduto}</td>
-                  <td>{v.quantidade}</td>
-                  <td>{v.valorUnitario}</td>
-                </tr>
-              </table>
-            </div>
-          ))}
-        </Tabs>
-      ))
-      :
-      <CardAviso />
-    }
+      {importacoes.length > 0 ? (
+        importacoes.map((v) => (
+          <Tabs
+            dataEntrega={FormatarData(v.menorDataEntrega.toString())}
+            dataImportacao={FormatarData(v.dataImportacao.toString())}
+            id={v.idImportacao}
+            quantidade={v.quantidadeItens}
+            total={v.totalImportacao}
+            key={v.idImportacao}
+          >
+            {v.dados.map((v) => (
+              <div className="container-table" key={v.id}>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Data Entrega</th>
+                      <th>Descrição Produto</th>
+                      <th>Quantidade</th>
+                      <th>Valor Unitário</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{FormatarId(v.id)}</td>
+                      <td>{FormatarData(v.dataEntrega.toString())}</td>
+                      <td>{v.nomeProduto}</td>
+                      <td>{v.quantidade}</td>
+                      <td>{v.valorUnitario}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </Tabs>
+        ))
+      ) : (
+        <CardAviso />
+      )}
     </Container>
   );
 };
